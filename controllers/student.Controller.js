@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcrypt');
 const Student = require('../models/student');
-const {response, request} = require('express');
+const {response} = require('express');
 
 const studentGet = async (req, res = response) =>{
     const {limite, desde} = req.query;
@@ -9,11 +9,12 @@ const studentGet = async (req, res = response) =>{
     const [total, students] = await Promise.all([
         Student.countDocuments (query),
         Student.find(query)
-        .skip(Number(limite))
+        .skip(Number(desde))
+        .limit(Number(limite))
     ]);
 
     res.status(200).json({
-        toral,
+        total,
         students
     });
 }
@@ -67,7 +68,7 @@ const studentPost = async (req, res) => {
     });
 }
 
-module.export = {
+module.exports = {
 
     studentPost,
     studentGet,
