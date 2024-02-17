@@ -16,13 +16,15 @@ const StudentSchema = Schema({
     },
     role:{
         type: String,
-        require: true,
         default: "STUDENT_ROLE",
-        inmutable: true
     },
     estado:{
-        type:String,
+        type:Boolean,
         default: true
+    },
+    courses:{
+        type: [String],
+        default: ['unassigned']
     }
 });
 

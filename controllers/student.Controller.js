@@ -30,7 +30,7 @@ const studentGet = async (req = request, res = response) =>{
 
     const putStudents = async (req, res = response) =>{
     const {id} = req.params;
-    const {_id, password,email, ...resto} = req.body;
+    const {_id, password,email, role, ...resto} = req.body;
 
     if(password){
         const salt = bcryptjs.genSaltSync();
@@ -38,29 +38,29 @@ const studentGet = async (req = request, res = response) =>{
     }
     
 
-    const student = await Student.findByIdAndUpdate(id, {estado: false});
+    const updateStudent = await Student.findByIdAndUpdate(id, resto, {new: true});
 
     res.status(200).json({
         msg: 'The student has been successfully upgraded',
-        student
+        updateStudent
     });
 }
 
 const studentDelete = async (req, res) =>{
     const {id} = req.params;
     const student = await Student.findByIdAndUpdate(id, {estado:false});
-    const usuarioAutenticado = req.usuario;
+    const authorizedStudent = req.usuario;
 
     res.status(200).json({
         msg: 'The student has been successfully removed',
         student,
-        usuarioAutenticado
+        authorizedStudent
     });
 }
 
 const studentPost = async (req, res) => {
-    const {name, email, password, role} = req.body;
-    const student = new Student({name, email, password, role});
+    const {name, email, password, } = req.body;
+    const student = new Student({name, email, password, courses });
 
     const salt = bcryptjs.genSaltSync();
     student.password = bcryptjs.hashSync(password,salt);

@@ -8,8 +8,7 @@ const TeacherSchema = Schema({
     },
     email:{
         type:String,
-        required:[true, 'the email is required'],
-        unique: true
+        required:[true, 'The email is required'],
     },
     password:{
         type:String,
@@ -17,11 +16,12 @@ const TeacherSchema = Schema({
     },
     role:{
         type:String,
-        require: true,
-        enum: "TEACHER_ROLE"
+        enum: "TEACHER_ROLE",
     },
     estado:{
         type: Boolean,
         default: true
     }
-})
+});
+
+module.exports = model('Teacher', TeacherSchema);

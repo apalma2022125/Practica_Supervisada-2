@@ -11,9 +11,12 @@ const login = async (req = request, res = response) =>{
         const student = await Student.findOne({email});
 
         if(!student){
-            return res.status(400).json({
-                msg: "Incorrect credentials, mail does not exist in the database."
-            });
+            student = await Student.findOne({email});
+            if (!student){
+                return res.status(400).json({
+                  msg: "Incorrect credentials, mail does not exist in the database."
+                });
+            }
         }
 
         if(!student.estado){
