@@ -1,21 +1,36 @@
 const Student = require('../models/student')
+const Teacher = require('../models/teacher');
 
-const existenteEmail = async (email = '') =>{
-    const existenteEmail = await Student.findOne({email});
-    if(existenteEmail){
-        throw new Error(`The email ${ email} is not exist in database`);
+const existingEmail = async (email = '') =>{
+    const existEmail = await Student.findOne({email});
+    if(existEmail){
+        throw new Error(`The email ${ email} already registered`);
     }
 }
 
 
-const existenteStudentById = async (id ='') =>{
-    const existenteStudent = await Student.findOne({id});
-    if(existenteStudent){
-        throw new Error(`The estudent ${id} is not exist`)
+const existingStudentById = async (id ='') =>{
+    const existStudent = await Student.findOne({id});
+    if(existStudent){
+        throw new Error(`The estudent ${id} does not exist`)
+    }
+}
+
+const existingEmailTeacher  = async (id = '') => {
+    const existEmailTeacher = await Teacher.findOne({email});
+    if(existEmailTeacher){
+        throw new Error(`The email${email} already registered`);
+    }
+}
+
+const existingTeacherById = async (id = '') =>{
+    const existTeacher = await Teacher.findOne({id});
+    if(existTeacher){
+        throw new Error(`The Teacher with the id ${id} does not exist`)
     }
 }
 
 module.exports = {
-    existenteStudentById,
-    existenteEmail
+    existingStudentById,
+    existingEmail
 }
