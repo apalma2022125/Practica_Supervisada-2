@@ -1,23 +1,23 @@
     const {response, request} = require("express");
 
-    const esTEACHERROLE = (req, res, next) =>{
+    const esStudentRole = (req, res, next) =>{
         if(!req.student){
             return res.status(500).json({
                 msg: "You want to validate a user without validating token first"
             });
         }
 
-        const {role, nombre} = req.student;
+        const {role, name} = req.student;
 
-        if(role !== "TEACHER_ROLE"){
+        if(role !== "STUDENT_ROLE"){
             return res.status(401).json({
-                msg: `${nombre} you are not a Teacher, you cannot use this endpoint`
+                msg: `${name} you are not a Student, you cannot use this endpoint`
             });
         };
         next();
     }
 
-    const tieneRolAutorizado = (...roles) =>{
+    const hasRoleAuthorized = (...roles) =>{
         return (req=request, res =response, next) =>{
             if (!req.student){
                 return res.status(500).json({
@@ -36,6 +36,6 @@
 
 
     module.exports = {
-        esTEACHERROLE,
-        tieneRolAutorizado
+        esStudentRole,
+        hasRoleAuthorized
     }

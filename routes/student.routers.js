@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { validarCampos} =require('../middlewares/validar-campos')
+const { validarCampos, validarJWT, hasRoleAuthorized} =require('../middlewares')
 
 const {
     studentPost,
@@ -11,7 +11,7 @@ const {
     studentDelete} = require('../controllers/student.Controller');
 
 
-    const { existenteEmail, existenteStudentById} = require('../helpers/db-validators');
+const { existingEmail, existingStudentById} = require('../helpers//db-validators');
 
     const router = Router();
 
@@ -21,15 +21,17 @@ const {
         "/:id",
         [
             check('id', 'Is not a valid id').isMongoId(),
-            check('id').custom(existenteStudentById),
+            check('id').custom(existingStudentById),
             validarCampos
         ], getStudentById);
 
     router.put(
             "/:id",
             [
-                check('id', "Is not a valid id"),
-                check('id').custom(existenteStudentById),
+                validarJWT,
+                hasRoleAuthorized('STUDENT_ROLE'),
+                check('id', "Is not a valid id").isMongoId(),
+                check('id').custom(existingStudentById),            
                 validarCampos    
             ],putStudents);
 
@@ -40,15 +42,17 @@ const {
             check("name", "The name cannot be empty").not().isEmpty(),
             check("password","Password must be longer than 6 characters").isLength({min:6}),
             check("email","Is not a valid email").isEmail(),
-            check("email").custom(existenteEmail),
+            check("email").custom(existingStudentById),
             validarCampos
         ], studentPost);
 
     router.delete(
         "/:id",
         [
+            validarJWT,
+            hasRoleAuthorized('STUDENT_ROLE'),
             check('id', 'Is not a valid is').isMongoId(),
-            check('id').custom(existenteStudentById),
+            check('id').custom(existingStudentById),
             validarCampos
         ], studentDelete);     
 

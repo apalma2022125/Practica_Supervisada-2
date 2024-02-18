@@ -32,5 +32,7 @@ const existingTeacherById = async (id = '') =>{
 
 module.exports = {
     existingStudentById,
-    existingEmail
+    existingEmail,
+    existingEmailTeacher,
+    existingTeacherById
 }

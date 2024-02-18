@@ -12,11 +12,12 @@ const validarJWT= async(req = request, res= response, next)=>{
     }
 
     try {
-        const {uid} = jwt.verify(token.env.SECRETORPRIVATEKEY);
+        const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
         const student = await Student.findById(uid);
         if(!student){
             return res.status(401).json({
-                msg: "The student is not exist in the database"
+                msg: "The student is not exist in the database",
+                student
             });
         }
 
@@ -32,7 +33,7 @@ const validarJWT= async(req = request, res= response, next)=>{
         console.log(e);
         res.status(401).json({
             msg:"Invalid Token"
-        })
+        });
     }
 }
 
