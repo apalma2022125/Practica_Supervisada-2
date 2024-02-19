@@ -8,7 +8,8 @@ const {
     courseGet,
     coursesPut,
     courseDelete,
-    coursePost
+    coursePost,
+    courseGetByStudent
 } = require('../controllers/course.controller');
 
 
@@ -21,6 +22,7 @@ router.get(
         hasRoleAuthorized('TEACHER_ROLE'),
     ],courseGet);
     
+    router.get("/showCourses", courseGetByStudent);
 
 router.put(
     "/:id",
@@ -50,4 +52,4 @@ router.post(
     ],coursePost);
 
 
-    module.export = router;
+    module.exports = router;

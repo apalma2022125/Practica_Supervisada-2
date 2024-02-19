@@ -55,12 +55,12 @@ const { existingEmail, existingStudentById, isCourseValid,MaxCourses,DuplicateCo
             check("name", "The name cannot be empty").not().isEmpty(),
             check("password","Password must be longer than 6 characters").isLength({min:6}),
             check("password", "Password cannot be empty").not().isEmpty(),
-            check("email", "Mail cannot be empty"),
+            check("email", "email cannot be empty"),
             check("email","Is not a valid email").isEmail(),
-            check("email").custom(existingEmail),
-            check("email").custom(isCourseValid),
-            check("email").custom(maxCuorses),
-            check("email").custom(DuplicateCourses),
+            check("email").custom(existingEmail),            
+            check("courses").custom(maxCuorses),
+            check("courses").custom(DuplicateCourses),
+            check("courses").custom(isCourseValid),
             validarCampos
         ], studentPost);
 

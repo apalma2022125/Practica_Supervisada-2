@@ -21,20 +21,17 @@ const StudentSchema = Schema({
     estado:{
         type:Boolean,
         default: true
-    },
+    } ,
     courses:{
         type: [Schema.Types.ObjectId],
-        ref: 'Courses',
+        ref: 'courses',
         default: ['unassigned']
-    }
+    } 
 });
 
-StudentSchema.methods.toJSON = function () {
-    const student = this.toObject();
-    delete student.__v;
-    student.aId = student._id;
-    delete student._id;
-    delete student.password;
+StudentSchema.methods.toJSON = function(){
+    const{ __v,password, _id, ...student} = this.toObject();
+    student.aId = _id;
     return student;
 };
 

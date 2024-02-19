@@ -29,9 +29,10 @@ router.put(
     "/:id",
     [
         validarJWT,
-        hasRoleAuthorized,
+        hasRoleAuthorized('TEACHER_ROLE'),
         check('id', 'no is a valid id').isMongoId(),
         check('id').custom(existingTeacherById),
+        check('courses').custom(DuplicateCourses),
         validarCampos
     ],teacherPut);
 
@@ -41,23 +42,24 @@ router.delete(
     "/:id",
     [
         validarJWT,
-        hasRoleAuthorized,
+        hasRoleAuthorized('TEACHER_ROLE'),
         check('id', 'is not a valid id').isMongoId(),
         check('id').custom(existingTeacherById),
         validarCampos
     ], teacherDelete);
 
-router.post(
-    "/",
-    [
-        check("name","The name cannot be empty").not().isEmpty(),
-        check("password","The password cannot be empty" ).not().isEmpty(),
-        check("password", "Password must be greater than 6 characters").isLength({min:6}),
-        check("email","The email cannot be empty"),
-        check("email").custom(existingEmailTeacher),
-        check("courses").custom(DuplicateCourses),
-        validarCampos
-    ],teacherPost);
-
+    router.post(
+        "/",
+        [
+            check("name", "The name cannot be empty").not().isEmpty(),
+            check("password", "The password cannot be empty").not().isEmpty(),
+            check("password", "Password must be greater than 6 characters").isLength({ min: 6 }),
+            check("email", "Email cannot be empty"),
+            check("email", "Has been a valid email").isEmail(),  
+            check("email").custom(existingEmailTeacher),          
+            check("courses").custom(DuplicateCourses),
+            validarCampos
+        ], teacherPost);
+    
 
 module.exports = router;

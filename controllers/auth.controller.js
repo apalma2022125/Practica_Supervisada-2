@@ -15,14 +15,14 @@ const login = async (req = request, res = response) =>{
             user = await Teacher.findOne({email});
             if (!user){
                 return res.status(400).json({
-                  msg: "Incorrect credentials, mail does not exist in the database."
+                  msg: "Incorrect credentials, email does not exist in the database."
                 });
             }
         }
 
         if(!user.estado){
             return res.status(400).json({
-                msg:"The student is not exist in tha database"
+                msg:"The user is not exist in tha database"
             });
         }
 

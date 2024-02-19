@@ -18,7 +18,7 @@ const existingStudentById = async (id ='') =>{
     }
 }
 
-const existingEmailTeacher  = async (id = '') => {
+const existingEmailTeacher  = async (email = '') => {
     const existEmailTeacher = await Teacher.findOne({email});
     if(existEmailTeacher){
         throw new Error(`The email${email} already registered`);
@@ -58,11 +58,6 @@ const DuplicateCourses = async (courses = []) => {
     }
 };
 
-const MaxCourses = async (courses = []) => {
-    if (courses.length > 3) {
-        throw new Error(`You can select up to 3 courses. Please remove any extra courses.`);
-    }
-};
 
 const maxCuorses = async (Courses = []) => {
     const maxCourses = 3;
@@ -82,6 +77,5 @@ module.exports = {
     existingTeacherById,
     isCourseValid,
     DuplicateCourses,
-    MaxCourses,
     maxCuorses
 }

@@ -7,7 +7,7 @@ const generarJWT = (uid = '') =>{
             playload,
             process.env.SECRETORPRIVATEKEY,
             {
-                expiresIn: '1h',
+                expiresIn: '3h',
             },
             (err,token)=>{
                 err ? (console.log(err),reject('No token can be generated')): resolve(token);

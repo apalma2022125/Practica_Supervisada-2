@@ -2,8 +2,7 @@ const Course = require('../models/courses')
 const Student = require('../models/student');
 const jwt = require('jsonwebtoken');
 
-const {res = respose, req = request} = require('express');
-
+const { response, request } = require('express');
 
 const courseGet = async (req, res) =>{
     const {limite, desde } = req.query;
@@ -13,6 +12,7 @@ const courseGet = async (req, res) =>{
         const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
         const query = {estado: true, teacherId: uid};
         const [total, courses] = await Promise.all([
+            Course.find(query),
             Course.find(query)
             .skip(Number(desde))
             .limit(Number(limite))
@@ -102,10 +102,34 @@ const coursePost = async (req, res) =>{
 }
 
 
+// resivi ayuda de un compaño para hacer esta funcion
+const updateCoursesInStudent = async (previousCourseId, newCourseId) => {
+    try {
+        console.log('Calling the function to update courses');
+        
+        const studentsWithPreviousCourse = await Student.find({ courses: previousCourseId });
+
+        await Promise.all(studentsWithPreviousCourse.map(async (student) => {
+            const filter = { _id: student._id, courses: previousCourseId };
+            const update = { $set: { "courses.$": newCourseId } };
+
+            await Student.findOneAndUpdate(filter, update);
+        }));
+
+        console.log('Courses updated successfully');
+    } catch (error) {
+        console.error('Error updating courses for students:', error);
+        throw error;
+    }
+}
+
+
+
 module.exports = {
     courseGet,
     courseGetByStudent,
     coursesPut,
     courseDelete,
-    coursePost
+    coursePost,
+    updateCoursesInStudent
 }

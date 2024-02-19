@@ -31,8 +31,8 @@ class Server{
     routes(){
         this.app.use(this.authPath, require('../routes/auth.routes'));
         this.app.use(this.studentPath, require('../routes/student.routers'));
-        this.app.use(this.teacherPath, require('../routes/teacher.routes'))
-        this.app.use(this.coursePath, require('../routes/courses.routes'))
+        this.app.use(this.teacherPath, require('../routes/teacher.routes'));
+        this.app.use(this.coursePath, require('../routes/courses.routes'));
     }
 
     listen(){

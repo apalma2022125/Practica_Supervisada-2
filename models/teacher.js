@@ -7,7 +7,7 @@ const TeacherSchema = Schema({
     },
     email:{
         type:String,
-        required:[true, 'The email is required'],
+        required:[true, 'The email is required']
     },
     password:{
         type:String,
@@ -15,7 +15,7 @@ const TeacherSchema = Schema({
     },
     role:{
         type:String,
-        enum: "TEACHER_ROLE",
+        default: 'TEACHER_ROLE',
     },
     estado:{
         type: Boolean,
@@ -26,9 +26,10 @@ const TeacherSchema = Schema({
 TeacherSchema.methods.toJSON = function () {
     const teacher = this.toObject();
     delete teacher.__v;
-    teacher.pId = teacher._id;
+    teacher.Id_of_teacher = teacher._id;
     delete teacher._id;
     delete teacher.password;
+    delete teacher.profesorId;
     return teacher;
 };
 
