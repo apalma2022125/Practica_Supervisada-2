@@ -1,5 +1,6 @@
 const bcryptjs = require('bcrypt');
 const Student = require('../models/student');
+const Course = require('../models/courses')
 const {response, request} = require('express');
 
 const studentGet = async (req = request, res = response) =>{
@@ -59,8 +60,8 @@ const studentDelete = async (req, res) =>{
 }
 
 const studentPost = async (req, res) => {
-    const {name, email, password } = req.body;
-    const student = new Student({name, email, password });
+    const {name, email, password, courses } = req.body;
+    const student = new Student({name, email, password, courses });
 
     const salt = bcryptjs.genSaltSync();
     student.password = bcryptjs.hashSync(password,salt);
