@@ -1,5 +1,4 @@
 const {Schema, model} = require('mongoose');
-const { boolean } = require('webidl-conversions');
 
 const TeacherSchema = Schema({
     name:{
@@ -23,5 +22,15 @@ const TeacherSchema = Schema({
         default: true
     }
 });
+
+TeacherSchema.methods.toJSON = function () {
+    const teacher = this.toObject();
+    delete teacher.__v;
+    teacher.pId = teacher._id;
+    delete teacher._id;
+    delete teacher.password;
+    return teacher;
+};
+
 
 module.exports = model('Teacher', TeacherSchema);

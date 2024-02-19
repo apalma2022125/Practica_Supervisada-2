@@ -20,5 +20,14 @@ const CoursesSchema = Schema({
     }
 });
 
+CoursesSchema.methods.toJSON = function () {
+    const course = this.toObject();
+    delete course.__v;
+    course.Id_of_course = course._id;
+    delete course._id;
+    delete course.password;
+    delete course.profesorId;
+    return course;
+};
 
 module.exports =  model('Course',CoursesSchema);

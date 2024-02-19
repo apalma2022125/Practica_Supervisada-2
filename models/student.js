@@ -23,9 +23,20 @@ const StudentSchema = Schema({
         default: true
     },
     courses:{
-        type: [String],
+        type: [Schema.Types.ObjectId],
+        ref: 'Courses',
         default: ['unassigned']
     }
 });
+
+StudentSchema.methods.toJSON = function () {
+    const student = this.toObject();
+    delete student.__v;
+    student.aId = student._id;
+    delete student._id;
+    delete student.password;
+    return student;
+};
+
 
 module.exports = model('Student', StudentSchema);
