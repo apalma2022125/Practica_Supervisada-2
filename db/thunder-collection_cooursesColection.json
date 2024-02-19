@@ -1,0 +1,76 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "cooursesColection",
+    "dateExported": "2024-02-19T07:30:43.363Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "325c5f08-d6dd-4108-a852-258f89134a73",
+            "colId": "a1171e3b-b7fd-4fd6-abb0-36b01e4725b2",
+            "containerId": "",
+            "name": "course post",
+            "url": "http://localhost:3000/api/course",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-19T02:36:09.479Z",
+            "modified": "2024-02-19T06:36:27.436Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQyZjA4YzZkMjhiZDBjMzJiMTUwYTkiLCJpYXQiOjE3MDgzMjI5NjcsImV4cCI6MTcwODMyNjU2N30.qingnO4mYgAnTl4hhOTrXWzv56xL4dvFuynM7hilI5s"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"courseName\": \"lalo\",\n  \"description\": \"Implementación de proyectos y actividades que enfoquen al estudiante a un ambiente práctico de la programación\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bda9748a-07a0-485e-8dad-488e48893858",
+            "colId": "a1171e3b-b7fd-4fd6-abb0-36b01e4725b2",
+            "containerId": "",
+            "name": "course get",
+            "url": "http://localhost:3000/api/course",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-19T02:36:19.319Z",
+            "modified": "2024-02-19T06:10:21.130Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQyZjA4YzZkMjhiZDBjMzJiMTUwYTkiLCJpYXQiOjE3MDgzMjI5NjcsImV4cCI6MTcwODMyNjU2N30.qingnO4mYgAnTl4hhOTrXWzv56xL4dvFuynM7hilI5s"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "411b65e3-192e-47b2-933d-5e0c3c622952",
+            "colId": "a1171e3b-b7fd-4fd6-abb0-36b01e4725b2",
+            "containerId": "",
+            "name": "course put",
+            "url": "",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-19T02:36:30.393Z",
+            "modified": "2024-02-19T02:36:30.393Z",
+            "headers": []
+        },
+        {
+            "_id": "8e69a493-42b6-45ff-b088-5703c44cd2a7",
+            "colId": "a1171e3b-b7fd-4fd6-abb0-36b01e4725b2",
+            "containerId": "",
+            "name": "course delete",
+            "url": "",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-19T02:36:41.143Z",
+            "modified": "2024-02-19T02:36:41.143Z",
+            "headers": []
+        }
+    ]
+}

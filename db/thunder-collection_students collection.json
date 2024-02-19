@@ -1,0 +1,116 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "students collection",
+    "dateExported": "2024-02-19T07:30:27.814Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "8603d523-9089-4647-9c3c-9e657be9232f",
+            "colId": "f00b70c5-ad37-4b31-9a51-d6c77c95a2b1",
+            "containerId": "",
+            "name": "student post",
+            "url": "http://localhost:3000/api/students/",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-14T04:49:17.963Z",
+            "modified": "2024-02-19T06:43:31.186Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQyZDBhYjYxZjhkZGMxMDMwODAyY2IiLCJpYXQiOjE3MDgzMTg1OTUsImV4cCI6MTcwODMyMjE5NX0.JL1GNBani-gBrYfISLcAg0zDi0XYTzr9gKofCfrujIw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"api\",\n  \"email\":\"api@gmail.com\",\n  \"password\":\"654321\",\n  \"courses\": [\"65d2f0fa6d28bd0c32b150bc\",\"65d2f1016d28bd0c32b150c0\",\"65d2f1a3f0485126bf3ac99e\"]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "378ef23b-64c4-40d5-b498-ad129ccf148c",
+            "colId": "f00b70c5-ad37-4b31-9a51-d6c77c95a2b1",
+            "containerId": "",
+            "name": "student get",
+            "url": "http://localhost:3000/api/students/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-14T05:03:02.674Z",
+            "modified": "2024-02-19T07:05:27.866Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "63eabc69-2569-45ac-87b0-7b4adc4989e3",
+            "colId": "f00b70c5-ad37-4b31-9a51-d6c77c95a2b1",
+            "containerId": "",
+            "name": "GetStudentById",
+            "url": "http://localhost:3000/api/students/65d2f89372ce8793c99fe3e2",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-19T02:25:18.901Z",
+            "modified": "2024-02-19T07:05:45.794Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b26bce7a-9b70-4cd8-abbb-ca0091562d32",
+            "colId": "f00b70c5-ad37-4b31-9a51-d6c77c95a2b1",
+            "containerId": "",
+            "name": "Student put",
+            "url": "http://localhost:3000/api/students/65d2d0ab61f8ddc1030802cb",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-02-19T02:25:33.184Z",
+            "modified": "2024-02-19T06:23:51.839Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{  \"name\":\"api\",\n  \"email\":\"api@gmail.com\",\n  \"password\":\"654321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a2118efd-afe2-4883-b2e7-b4844e2757db",
+            "colId": "f00b70c5-ad37-4b31-9a51-d6c77c95a2b1",
+            "containerId": "",
+            "name": "student delete",
+            "url": "",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-02-19T02:25:53.913Z",
+            "modified": "2024-02-19T06:23:13.017Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{  \"name\":\"api\",\n  \"email\":\"api@gmail.com\",\n  \"password\":\"654321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2edd8aaa-99da-4091-b418-db6d81933838",
+            "colId": "f00b70c5-ad37-4b31-9a51-d6c77c95a2b1",
+            "containerId": "",
+            "name": "courses get",
+            "url": "",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-19T02:26:14.576Z",
+            "modified": "2024-02-19T02:26:14.576Z",
+            "headers": []
+        }
+    ]
+}

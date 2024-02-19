@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "login post",
+    "dateExported": "2024-02-19T07:30:56.764Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f8a937a9-8980-4aff-9b41-498327bed249",
+            "colId": "39f41869-8ee3-445d-bc54-1e880d2968ec",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/api/auth/login/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-19T04:42:37.026Z",
+            "modified": "2024-02-19T06:27:18.053Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"pablo@gmail.com\",\n  \"password\": \"000000\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
