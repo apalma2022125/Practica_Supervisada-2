@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const Student = require('../models/student');
+const Teacher = require('../models/teacher');
 const {request, response} = require('express');
 
 const validarJWT= async(req = request, res= response, next)=>{
@@ -13,21 +14,26 @@ const validarJWT= async(req = request, res= response, next)=>{
 
     try {
         const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
-        const student = await Student.findById(uid);
-        if(!student){
+        let user = await Student.findById(uid);
+        if(!user){
+            user = await Teacher.findById(uid);
+            if(!user){
+                return res.status(400).json({
+                    uid,
+                    msg: "This user does not exist in the database",
+                    user,
+                });
+            }
+        }
+        console.log(user);
+
+        if(!user.estado){
             return res.status(401).json({
-                msg: "The student is not exist in the database",
-                student
+                msg:"Invalid token, user with false status"
             });
         }
 
-        if(!student.estado){
-            return res.status(401).json({
-                msg:"Invalid token, student with false status"
-            });
-        }
-
-        req.student = student;
+        req.user = user;
         next();
     } catch (e) {
         console.log(e);
