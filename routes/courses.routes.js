@@ -20,6 +20,7 @@ router.get(
         validarJWT,
         hasRoleAuthorized('TEACHER_ROLE'),
     ],courseGet);
+    
 
 router.put(
     "/:id",

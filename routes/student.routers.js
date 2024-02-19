@@ -11,7 +11,7 @@ const {
     studentDelete} = require('../controllers/student.Controller');
 
 
-const { existingEmail, existingStudentById} = require('../helpers//db-validators');
+const { existingEmail, existingStudentById, isCourseValid,MaxCourses,DuplicateCourses, maxCuorses} = require('../helpers//db-validators');
 
     const router = Router();
 
@@ -31,20 +31,13 @@ const { existingEmail, existingStudentById} = require('../helpers//db-validators
                 validarJWT,
                 hasRoleAuthorized('STUDENT_ROLE'),
                 check('id', "Is not a valid id").isMongoId(),
-                check('id').custom(existingStudentById),            
+                check('id').custom(existingStudentById), 
+                check("courses").custom(isCourseValid), 
+                check("courses").custom(maxCuorses),           
+                check("courses").custom(DuplicateCourses),                                  
                 validarCampos    
             ],putStudents);
 
-
-     router.post(
-        "/",
-        [
-            check("name", "The name cannot be empty").not().isEmpty(),
-            check("password","Password must be longer than 6 characters").isLength({min:6}),
-            check("email","Is not a valid email").isEmail(),
-            check("email").custom(existingStudentById),
-            validarCampos
-        ], studentPost);
 
     router.delete(
         "/:id",
@@ -56,4 +49,19 @@ const { existingEmail, existingStudentById} = require('../helpers//db-validators
             validarCampos
         ], studentDelete);     
 
-        module.exports = router;
+    router.post(
+         "/",
+        [
+            check("name", "The name cannot be empty").not().isEmpty(),
+            check("password","Password must be longer than 6 characters").isLength({min:6}),
+            check("password", "Password cannot be empty").not().isEmpty(),
+            check("email", "Mail cannot be empty"),
+            check("email","Is not a valid email").isEmail(),
+            check("email").custom(existingEmail),
+            check("email").custom(isCourseValid),
+            check("email").custom(maxCuorses),
+            check("email").custom(DuplicateCourses),
+            validarCampos
+        ], studentPost);
+
+    module.exports = router;
