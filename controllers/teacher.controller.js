@@ -72,6 +72,8 @@ const teacherGet = async (req, res) =>{
             });
         }
 
+        
+
 
         module.exports = {
             teacherGet,

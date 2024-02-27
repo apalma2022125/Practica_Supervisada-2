@@ -24,6 +24,9 @@ router.get(
     
     router.get("/showCourses", courseGetByStudent);
 
+
+    
+
 router.put(
     "/:id",
      [
@@ -47,7 +50,7 @@ router.post(
     [
         validarJWT,
         hasRoleAuthorized('TEACHER_ROLE'),
-        check("courseName", "Course name cannot be empty").not().isEmpty(),
+        check("coursesName", "Course name cannot be empty").not().isEmpty(),
         validarCampos
     ],coursePost);
 
