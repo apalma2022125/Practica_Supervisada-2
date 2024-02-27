@@ -23,13 +23,9 @@ const TeacherSchema = Schema({
     }
 });
 
-TeacherSchema.methods.toJSON = function () {
-    const teacher = this.toObject();
-    delete teacher.__v;
-    teacher.Id_of_teacher = teacher._id;
-    delete teacher._id;
-    delete teacher.password;
-    delete teacher.profesorId;
+TeacherSchema.methods.toJSON = function(){
+    const{ __v,password, _id, ...teacher} = this.toObject();
+    teacher.aId = _id;
     return teacher;
 };
 

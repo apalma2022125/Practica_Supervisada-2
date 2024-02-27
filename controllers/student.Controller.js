@@ -13,18 +13,8 @@ const studentGet = async (req , res ) =>{
         .skip(Number(desde))
         .limit(Number(limite))
 
-        //resivi ayuda de un compañero
-        .populate({
-            path: 'courses',
-            select: 'coursesName estado',
-            transform: doc => {
-                if (doc.estado) {
-                    return { coursesName: doc.coursesName };
-                } else {
-                    return { coursesName: 'Course not assigned' };
-                }
-            }
-        })
+
+        
     ]);
 
     res.status(200).json({
@@ -36,17 +26,6 @@ const studentGet = async (req , res ) =>{
     const getStudentById = async (req, res = response) =>{
         const {id} = req.params;
         const student= await Student.findOne({_id: id})
-        .populate({
-            path: 'courses',
-            select: 'coursesName estado',
-            transform: doc => {
-                if (doc.estado) {
-                    return { coursesName: doc.coursesName };
-                } else {
-                    return { coursesName: 'Course not assigned' };
-                }
-            }
-        });
         res.status(200).json({
             student
         });

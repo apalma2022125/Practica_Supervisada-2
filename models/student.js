@@ -23,7 +23,7 @@ const StudentSchema = Schema({
         default: true
     } ,
     courses:{
-        type: [Schema.Types.ObjectId],
+        type: [Schema.Types.String],
         ref: 'courses',
         default: ['unassigned']
     } 
