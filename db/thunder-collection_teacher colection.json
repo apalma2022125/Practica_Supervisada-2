@@ -1,0 +1,99 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "teacher colection",
+    "dateExported": "2024-02-19T07:30:49.988Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b06cf739-476c-485a-a059-b6b1e15715ff",
+            "colId": "e47089fa-1bdd-4444-98bf-944fbda43999",
+            "containerId": "",
+            "name": "teacher post",
+            "url": "http://localhost:3000/api/teacher",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-19T02:47:20.312Z",
+            "modified": "2024-02-19T06:09:16.870Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"pipe\",\n  \"email\": \"pipe@gmail.com\",\n  \"password\": \"000000\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b36f1296-a864-4a06-b3f3-486ba2652d84",
+            "colId": "e47089fa-1bdd-4444-98bf-944fbda43999",
+            "containerId": "",
+            "name": "teacher get",
+            "url": "http://localhost:3000/api/teacher",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-19T02:47:31.127Z",
+            "modified": "2024-02-19T04:18:34.173Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "11480ae9-921e-441d-b056-cf8bbbadcbf5",
+            "colId": "e47089fa-1bdd-4444-98bf-944fbda43999",
+            "containerId": "",
+            "name": "Get TeacherById",
+            "url": "http://localhost:3000/api/teacher/65d2d63ad1e0d5f345f907f1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-19T02:47:45.958Z",
+            "modified": "2024-02-19T06:26:14.689Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4fc22824-6f98-4f5f-8beb-5d49b18de518",
+            "colId": "e47089fa-1bdd-4444-98bf-944fbda43999",
+            "containerId": "",
+            "name": "Teacher put",
+            "url": "http://localhost:3000/api/teacher/65d2d63ad1e0d5f345f907f1",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-19T02:48:00.585Z",
+            "modified": "2024-02-19T06:27:32.200Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQyZDYzYWQxZTBkNWYzNDVmOTA3ZjEiLCJpYXQiOjE3MDgzMjQwMzgsImV4cCI6MTcwODMyNzYzOH0.vKxpdX_6nOQ0Pbsie2VXnhTBEYMYmQ9rukCK36KQaH8"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"pala\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e3620c93-8eb1-4772-8491-d2985e2f603a",
+            "colId": "e47089fa-1bdd-4444-98bf-944fbda43999",
+            "containerId": "",
+            "name": "teacher delete",
+            "url": "http://localhost:3000/api/teacher/65d2d63ad1e0d5f345f907f1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-19T02:48:13.191Z",
+            "modified": "2024-02-19T06:28:04.675Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQyZDYzYWQxZTBkNWYzNDVmOTA3ZjEiLCJpYXQiOjE3MDgzMjQwMzgsImV4cCI6MTcwODMyNzYzOH0.vKxpdX_6nOQ0Pbsie2VXnhTBEYMYmQ9rukCK36KQaH8"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
